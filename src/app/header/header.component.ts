@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  navBarOpenStatus:boolean = false
 
   constructor() { }
-
+  
   ngOnInit() {
+  }
+
+  toogleNav():void{
+      this.navBarOpenStatus = !this.navBarOpenStatus;
   }
 
 }

@@ -1,2 +1,25 @@
-<a routerLink="/login" >Login</a>
-<a routerLink="/register" >Register</a>
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-primary">
+  <button class="navbar-toggler navbar-toggler-right" (click)="toogleNav(navBar)" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">
+    Title
+  </a>
+  <div class="collapse navbar-collapse" [ngClass]="{'show':navBarOpenStatus}" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
+
+

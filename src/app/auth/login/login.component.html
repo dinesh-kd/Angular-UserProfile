@@ -1,3 +1,29 @@
-<p>
-  login works!
-</p>
+<div class="row">
+  <div class="col-md-4"> </div>
+  <div class="col-md-4 rounded login-content bg-primary padding-2">
+      <div class="login-header text-white">
+        <h5 class="text-capitalize">{{pageType}}</h5>
+      </div>
+      <div class="login-body bg-white">
+        
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+
+      </div>
+      <div class="login-footer" *ngIf="pageType==='login'">
+        <button type="button" class="btn btn-secondary">Login</button>
+        <button type="button" class="btn btn-secondary">Register</button>
+      </div>
+      <div class="login-footer" *ngIf="pageType==='register'">
+        <button type="button" class="btn btn-secondary">Register</button>
+        <button type="button" class="btn btn-secondary">Login</button>
+      </div>
+  </div>
+</div>

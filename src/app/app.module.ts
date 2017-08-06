@@ -9,7 +9,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
-import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { RegisterComponent } from './register/register.component';
     ProfileComponent,
     LoginComponent,
     PasswordResetComponent,
-    ForgetPasswordComponent,
-    RegisterComponent
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

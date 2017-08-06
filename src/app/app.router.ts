@@ -11,8 +11,8 @@ import { RegisterComponent } from './register/register.component';
  
 const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
-  { path: 'login',component: LoginComponent },
-  { path: 'register',component: RegisterComponent },
+  { path: 'login',component: LoginComponent,data: { type: 'login' } },
+  { path: 'register',component: LoginComponent,data: { type: 'register' } },
   { path: 'forget-password',component: ForgetPasswordComponent },
   { path: 'password-reset',component: PasswordResetComponent },
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
