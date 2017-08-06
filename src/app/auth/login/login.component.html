@@ -9,23 +9,43 @@
         
         <div class="form-group">
           <label for="email">Email address</label>
-          <input type="email" class="form-control" ngModel name="email" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-          <small id="emailHelp" class="form-text text-muted"></small>
+          <input type="email"  class="form-control"  #Email="ngModel" ngModel name="email" id="email" placeholder="Enter email" required email>
+          <div class="text-muted" *ngIf="Email.errors && (Email.dirty || Email.touched)">
+              <small [hidden]="!Email.errors.required">
+                Email is required
+              </small>
+              <small [hidden]="(Email.errors.required || !Email.errors.email)">
+                Please enter valid email address
+              </small>                                   
+          </div>
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" ngModel name="password" id="password" placeholder="Password">
+          <input type="password" class="form-control" #Password="ngModel" ngModel name="password" id="password" placeholder="Password" minlength="5" required>
+          <div class="text-muted" *ngIf="Password.errors && (Password.dirty || Password.touched)">
+              <small [hidden]="!Password.errors.required">
+                Password is required
+              </small>
+              <small [hidden]="(Password.errors.required || !Password.errors.minlength)">
+                Password min length 5
+              </small>                                    
+          </div>
         </div>
-
+        <div class="alert alert-danger" role="alert" [hidden]="!loginError">{{loginErrorMsg}}</div>
       </div>
       <div class="login-footer" *ngIf="pageType==='login'">
-        <button type="submit" class="btn btn-secondary" >Login</button>
-        <a class="btn btn-secondary" routerLink="/register">Register</a>
+        <button type="submit" [disabled]="!loginForm.form.valid || formRequest" class="btn btn-secondary" >
+           <i class="fa fa-spinner fa-spin fa-fw" [hidden]="!formRequest" ></i>Login
+        </button>
+        <a routerLink="/register" class="text-white"> Register </a> /
         <a routerLink="/register" class="text-white" >Forget Password ?</a>
       </div>
       <div class="login-footer" *ngIf="pageType==='register'">
-        <button type="submit" class="btn btn-secondary">Register</button>
-        <a class="btn btn-secondary" routerLink="/login">Login</a>
+        <button type="submit" [disabled]="!loginForm.form.valid || formRequest" class="btn btn-secondary">
+          <i class="fa fa-spinner fa-spin fa-fw" [hidden]="!formRequest" ></i>Register
+        </button>
+        /
+        <a routerLink="/login" class="text-white">Login</a>
       </div>
       </form>
   </div>

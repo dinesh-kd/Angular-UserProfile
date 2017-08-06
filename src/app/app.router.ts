@@ -7,7 +7,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
-import { RegisterComponent } from './register/register.component';
  
 const appRoutes: Routes = [
   { path: 'profile', component: ProfileComponent },
