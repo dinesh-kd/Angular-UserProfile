@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { CookieModule } from 'ngx-cookie';
 
 import { AppRoutingModule } from './app.router';
 
@@ -26,6 +27,7 @@ import { LoginService } from './auth/login/login.service';
     BrowserModule,
     FormsModule,
     HttpModule,
+    CookieModule.forRoot(),
     AppRoutingModule
   ],
   providers: [LoginService],
