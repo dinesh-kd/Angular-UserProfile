@@ -1,9 +1,11 @@
 import { Headers, Http } from '@angular/http';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../../../environments/environment';
 import { LoginModel } from './login.model';
 
+@Injectable()
 export class LoginService {
 
   private loginUrl = environment.apiUrl + 'user/login';
