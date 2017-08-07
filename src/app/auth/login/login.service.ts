@@ -20,7 +20,7 @@ export class LoginService {
       .then(response => {
           let resp = response.json();
           if(resp.success)
-            this.cookie.put(environment.tokenCookieName,resp.token);
+          this.cookie.put(environment.tokenCookieName,resp.token);
           return resp;
       })
       .catch();
