@@ -65,6 +65,13 @@ export class ProfileComponent implements OnInit {
         const files = $event.target.files || $event.srcElement.files;
         const file = files[0];
         let profileData = {profile_pic:file};
+        
+        var reader = new FileReader();
+        reader.onload = (event:any) => {
+           this.profile.profile_pic = event.target.result;
+        }
+        reader.readAsDataURL(file);
+        
         this.onSubmit(profileData);
     }
 
