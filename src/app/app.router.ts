@@ -7,15 +7,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { LoginComponent } from './auth/login/login.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { ForgetPasswordComponent } from './auth/forget-password/forget-password.component';
+import { AuthGuard } from './shared/auth.guard';
  
 const appRoutes: Routes = [
-  { path: 'profile', component: ProfileComponent },
-  { path: 'login',component: LoginComponent,data: { type: 'login' } },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'login',component: LoginComponent,data: { type: 'login' }, canActivate: [AuthGuard] },
   { path: 'register',component: LoginComponent,data: { type: 'register' } },
   { path: 'forget-password',component: ForgetPasswordComponent },
   { path: 'password-reset',component: PasswordResetComponent },
-  { path: '',   redirectTo: '/login', pathMatch: 'full' },
-  { path: '**', component: ProfileComponent }
+  { path: '',   redirectTo: '/profile', pathMatch: 'full' },
+  { path: '**', redirectTo: '/profile' }
 ];
  
 @NgModule({

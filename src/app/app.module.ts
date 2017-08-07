@@ -16,6 +16,7 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
 import { LoginService } from './auth/login/login.service';
 import { ProfileService } from './profile/profile.service';
 import { AuthInterceptor } from './shared/auth.interceptor';
+import { AuthGuard } from './shared/auth.guard';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { AuthInterceptor } from './shared/auth.interceptor';
     CookieModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [LoginService,AuthInterceptor,ProfileService],
+  providers: [LoginService,AuthInterceptor,ProfileService,AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

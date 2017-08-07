@@ -14,8 +14,12 @@ export class LoginService {
 
   constructor(private http: Http, private cookie:CookieService) { }
 
+  private get headers(): Headers {
+    return new Headers({'no_auth': true })
+  };
+
   login(loginData: LoginModel): Promise<any> {
-    return this.http.post(this.loginUrl, loginData)
+    return this.http.post(this.loginUrl, loginData, { headers: this.headers })
       .toPromise()
       .then(response => {
           let resp = response.json();

@@ -16,6 +16,11 @@ export class AuthInterceptor {
     this.httpInterceptor.request().addInterceptor((data, method) => {
       const headers = getHttpHeadersOrInit(data, method);
       headers.delete("Authorization");
+      
+      if (headers.get("no_auth") && headers.get("no_auth").toString() == 'true') {
+            headers.delete("no_auth");
+            return data;
+      }
 
       let cookie = this.cookie.get(environment.tokenCookieName);
       if (cookie != null) {
