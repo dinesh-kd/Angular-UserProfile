@@ -31,7 +31,7 @@ export class LoginService {
   }
 
   register(registerData: LoginModel): Promise<any> {
-    return this.http.post(this.registerUrl, registerData)
+    return this.http.post(this.registerUrl, registerData, { headers: this.headers })
       .toPromise()
       .then(response => {
         return response.json();

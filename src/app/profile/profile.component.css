@@ -1,0 +1,31 @@
+.login-content
+{
+    margin-top: 5%;
+    border: 1px solid #ccc;
+}
+
+.login-header
+{
+    padding: 20px
+}
+
+.login-body
+{
+    min-height: 250px;
+    padding: 10% 10%;
+}
+
+.login-footer
+{
+   padding: 10px
+}
+
+.cursor-pointer
+{
+    cursor: pointer;
+}
+
+.profile-space
+{
+    margin-top: 10px;
+}

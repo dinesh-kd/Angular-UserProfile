@@ -32,4 +32,25 @@ export class ProfileService {
         }
     }
 
+    updateProfile(profileData): Promise<any[]> {
+
+        let formdata = new FormData();
+        if(profileData.profile_pic==undefined)
+        {
+            formdata.append('name',profileData.name);
+            formdata.append('email',profileData.email);
+            formdata.append('phone',profileData.phone);
+        }else{
+            formdata.append('profile_pic',profileData.profile_pic);            
+        }
+
+        return this.http.put(this.profileUpdateUrl, formdata)
+      .toPromise()
+      .then(response => {
+          return response.json();
+      })
+      .catch();
+    }
+
+    
 }

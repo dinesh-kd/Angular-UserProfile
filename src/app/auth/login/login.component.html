@@ -38,7 +38,7 @@
            <i class="fa fa-spinner fa-spin fa-fw" [hidden]="!formRequest" ></i>Login
         </button>
         <a routerLink="/register" class="text-white"> Register </a> /
-        <a routerLink="/register" class="text-white" >Forget Password ?</a>
+        <a routerLink="/forget-password" class="text-white" >Forget Password ?</a>
       </div>
       <div class="login-footer" *ngIf="pageType==='register'">
         <button type="submit" [disabled]="!loginForm.form.valid || formRequest" class="btn btn-secondary">

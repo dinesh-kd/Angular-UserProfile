@@ -1,3 +1,73 @@
-<p>
-  {{profile.email}}
-</p>
+<div class="row">
+  <div class="col-md-4"> </div>
+  <div class="col-md-4 rounded login-content bg-primary padding-2">
+    <form #profileForm="ngForm"  (ngSubmit)="onSubmit(profileForm.value)">
+      <div class="login-header text-white">
+        <h5 class="text-capitalize">Profile
+          <a (click)="editProfile()" class="cursor-pointer"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+        </h5>
+      </div>
+      <div class="login-body bg-white">
+        <div class="row">
+          <div class="col-md-4">
+            <img [src]="profile.profile_pic" width="100px" />
+            <input type="file" (change)="uploadFile($event);">
+          </div>
+          <br/>
+          <div class="col-md-8" [hidden]="editMode" [hidden]="!editMode">
+            {{profile.name}}
+          </div>
+
+          <div class="col-md-8" [hidden]="!editMode">
+            <input type="name"  class="form-control" [hidden]="!editMode" [value]="profile.name"  #Name="ngModel" ngModel name="name" id="name" placeholder="Enter name" required>
+            <div class="text-muted" *ngIf="Name.errors && (Name.dirty || Name.touched)">
+                <small [hidden]="!Name.errors.required">
+                  Name is required
+                </small>                                 
+            </div>
+          </div>
+          
+          <div class="clearfix"><br/></div>
+
+          <div class="col-md-4"> Email :</div>
+          <div class="col-md-8" [hidden]="editMode">
+            {{profile.email}}
+          </div>
+          <div class="col-md-8 profile-space" [hidden]="!editMode">
+            <input type="email"  class="form-control" #Email="ngModel" [ngModel]="profile.email" name="email" id="email" placeholder="Enter email" required email>
+            <div class="text-muted" *ngIf="Email.errors && (Email.dirty || Email.touched)">
+                <small [hidden]="!Email.errors.required">
+                  Email is required
+                </small>
+                <small [hidden]="(Email.errors.required || !Email.errors.email)">
+                  Please enter valid email address
+                </small>                                   
+            </div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <div class="col-md-4">
+            Phone :
+          </div>
+          <div class="col-md-8"  [hidden]="editMode">
+            {{profile.phone}}
+          </div>
+
+          <div class="col-md-8 profile-space"  [hidden]="!editMode">
+            <input type="text"  class="form-control"  #Phone="ngModel" [ngModel]="profile.phone" name="phone" id="phone" placeholder="Enter phone no">
+          </div>
+
+        </div>
+
+        <div class="alert alert-danger" role="alert" [hidden]="!error">{{errorMsg}}</div>
+      </div>
+      <div class="login-footer" [hidden]="!editMode">
+        <button type="submit" [disabled]="!profileForm.form.valid || formRequest" class="btn btn-secondary" >
+           <i class="fa fa-spinner fa-spin fa-fw" [hidden]="!formRequest" ></i> Save
+        </button>
+      </div>
+      </form>
+  </div>
+</div>

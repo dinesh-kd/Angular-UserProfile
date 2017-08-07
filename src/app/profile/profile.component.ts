@@ -8,6 +8,11 @@ import { ProfileService } from './profile.service'
 })
 export class ProfileComponent implements OnInit {
   profile:any = ''
+  editMode:boolean = false;
+  error:boolean = false;
+  errorMsg:string = '';
+  formRequest:boolean = false;
+
   constructor(private profileService:ProfileService) { }
 
   ngOnInit() {
@@ -26,4 +31,42 @@ export class ProfileComponent implements OnInit {
       }
       )
   }
+
+  editProfile(): void{
+    this.editMode = !this.editMode;
+  }
+
+  onSubmit(profileData):void {
+    this.error = false;
+    this.formRequest = true;
+    this.errorMsg = '';
+
+    this.updateProfile(profileData)
+  }
+
+  updateProfile(profileData) : void{
+    this.profileService.updateProfile(profileData).then(
+      data => {
+          this.formRequest = false;
+          this.error = true;
+          this.errorMsg = 'Updated successfully !!!';
+          this.editMode = false;
+      }
+    ).catch(
+      error => {
+        this.formRequest = false;
+        this.error = true;
+        this.errorMsg = 'Something went wrong !!';
+      }
+      )
+  }
+
+  uploadFile($event) {
+        const files = $event.target.files || $event.srcElement.files;
+        const file = files[0];
+        let profileData = {profile_pic:file};
+        this.onSubmit(profileData);
+    }
+
+
 }
