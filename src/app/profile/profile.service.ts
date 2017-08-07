@@ -1,6 +1,7 @@
 import { Headers, Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
+import { Subject }    from 'rxjs/Subject';
 
 import { environment } from '../../environments/environment';
 
@@ -11,6 +12,8 @@ export class ProfileService {
   private profileUpdateUrl = environment.apiUrl + 'user/profile/edit';
   
   private profile = [];
+  profileData = new Subject<any>();
+  profileDataOb = this.profileData.asObservable();
 
   constructor(private http: Http) { }
       
@@ -24,6 +27,7 @@ export class ProfileService {
                 .toPromise()
                 .then(response => {
                     this.profile = response.json();
+                    this.profileData.next(this.profile);
                     return this.profileDetails;
                 })
                 .catch();
@@ -38,7 +42,6 @@ export class ProfileService {
         if(profileData.profile_pic==undefined)
         {
             formdata.append('name',profileData.name);
-            formdata.append('email',profileData.email);
             formdata.append('phone',profileData.phone);
         }else{
             formdata.append('profile_pic',profileData.profile_pic);            
@@ -51,6 +54,10 @@ export class ProfileService {
       })
       .catch();
     }
-
+    
+    resetData():void{
+        this.profileData.next(null);
+        this.profile = [];
+    }
     
 }

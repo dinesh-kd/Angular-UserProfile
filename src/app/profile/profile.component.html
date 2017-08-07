@@ -11,19 +11,20 @@
       <div class="login-body bg-white">
         <table width="100%">
           <tr>
-            <td colspan="2">
+            <td colspan="3">
               <img [src]="profile.profile_pic" width="100px" />
               <input type="file" (change)="uploadFile($event);" [hidden]="!editMode">
             </td>
           </tr>
           <tr>
-            <td>Name: </td>
+            <td>Name</td>
+            <td>:</td>
             <td>
-              <div [hidden]="editMode" [hidden]="!editMode">
+              <div [hidden]="editMode">
                 {{profile.name}}
               </div>
               <div [hidden]="!editMode">
-                <input type="name"  class="form-control" [hidden]="!editMode" [value]="profile.name"  #Name="ngModel" ngModel name="name" id="name" placeholder="Enter name" required>
+                <input type="name"  class="form-control" [hidden]="!editMode" #Name="ngModel" [(ngModel)]="profile.name" name="name" id="name" placeholder="Enter name" required>
                 <div class="text-muted" *ngIf="Name.errors && (Name.dirty || Name.touched)">
                     <small [hidden]="!Name.errors.required">
                       Name is required
@@ -33,13 +34,14 @@
             </td>            
           </tr>
           <tr>
-            <td>Email :</td>
+            <td>Email</td>
+            <td>:</td>
             <td>
               <div [hidden]="editMode">
                 {{profile.email}}
               </div>
               <div [hidden]="!editMode">
-                <input type="email"  class="form-control" #Email="ngModel" [ngModel]="profile.email" name="email" id="email" placeholder="Enter email" required email>
+                <input type="email"  class="form-control" #Email="ngModel" [(ngModel)]="profile.email" name="email" id="email" placeholder="Enter email" required email>
                 <div class="text-muted" *ngIf="Email.errors && (Email.dirty || Email.touched)">
                     <small [hidden]="!Email.errors.required">
                       Email is required
@@ -52,14 +54,15 @@
             </td>
           </tr>
           <tr>
-            <td> Phone :</td>
+            <td> Phone </td>
+            <td>:</td>
             <td>
-              <div class="col-md-8"  [hidden]="editMode">
+              <div [hidden]="editMode">
                 {{profile.phone}}
               </div>
 
-              <div class="col-md-8 profile-space"  [hidden]="!editMode">
-                <input type="text"  class="form-control"  #Phone="ngModel" [ngModel]="profile.phone" name="phone" id="phone" placeholder="Enter phone no">
+              <div [hidden]="!editMode">
+                <input type="text"  class="form-control"  #Phone="ngModel" [(ngModel)]="profile.phone" name="phone" id="phone" placeholder="Enter phone no">
               </div>
             </td>
           </tr>

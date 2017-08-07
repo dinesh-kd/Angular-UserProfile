@@ -11,3 +11,8 @@ body{
 {
     padding: 2px !important;
 }
+
+.cursor-pointer
+{
+    cursor: pointer;
+}

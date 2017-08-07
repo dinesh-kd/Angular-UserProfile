@@ -5,13 +5,19 @@
   <a class="navbar-brand" href="#">
     Title
   </a>
+
   <div class="collapse navbar-collapse" [ngClass]="{'show':navBarOpenStatus}" id="navbarNav">
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto" *ngIf="!profileDetails">
       <li class="nav-item">
         <a class="nav-link" routerLink="/login">Login</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/register">Register</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="profileDetails">
+      <li class="nav-item">
+        <a class="nav-link cursor-pointer" (click)="logout()">Logout</a>
       </li>
     </ul>
   </div>
