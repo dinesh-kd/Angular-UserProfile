@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl:"http://api.examly.in:3000/",
+  apiUrl:"",
   tokenCookieName : 'devUserToken'
 };
